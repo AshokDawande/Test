@@ -10,6 +10,7 @@
         margin: 0 auto;
         background:yellow;
         margin:10px;
+        text-align:center;
       }
 
       #note-form {
@@ -19,10 +20,14 @@
         margin-bottom: 20px;
       }
 
-      #note-title,
-      #note-content {
+      #note-title{
         resize: none;
         padding: 5px;
+      }
+      
+      #note-content{
+          padding:5px;
+          height:100px;
       }
 
       #notes-container {
@@ -32,7 +37,7 @@
       }
 
       .note {
-        background-color: #ddd;
+        background-color:orange;
         padding: 10px;
         border-radius: 5px;
       }
@@ -40,15 +45,19 @@
       .note h3 {
         margin-top: 0;
       }
+      
+      #h{
+          background-color:orange;
+      }
     </style>
     <title>Notes App</title>
   </head>
   <body>
-    <h1>Notes App</h1>
+    <h1 id="h">Notes App</h1>
     <form id="note-form">
       <input type="hidden" id="note-id" />
       <label for="note-title">Title:</label>
-      <input type="text" id="note-title" name="note-title" required />
+      <textarea id="note-title" name="note-title" required ></textarea>
       <label for="note-content">Content:</label>
       <textarea id="note-content" name="note-content" required></textarea>
       <button type="submit">Save Note</button>
@@ -69,7 +78,7 @@
           noteDiv.className = "note";
           noteDiv.innerHTML = `
           <h3>${note.title}</h3>
-          <p>${note.content}</p>
+          <pre>${note.content}</pre>
           <button class="delete-note" data-index="${index}">Delete</button>
         `;
           notesContainer.appendChild(noteDiv);
